@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bmi_calculator/constants/constants.dart';
+
 
 class IconContent extends StatelessWidget {
   final FaIcon icon;
@@ -27,9 +29,7 @@ class IconContent extends StatelessWidget {
             onPressedButton();
           },
         ),
-        const SizedBox(
-          height: 8.0,
-        ),
+        kHeightSpaceIcons,
         Text(
           title,
           style: TextStyle(color: colorTitle),
