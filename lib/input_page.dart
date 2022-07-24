@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+  
+
+Color colorCard = const Color(0xFF323244);
+Color colorBottomContainer = const Color(0xFFE83D66);
+const double bottomContainerHeight = 80.0;
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -8,6 +13,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,31 +26,37 @@ class _InputPageState extends State<InputPage> {
           children: [
             Expanded(
               child: Row(
-                children: const [
+                children: [
                   Expanded(
-                    child: ReusableCard(color: Color(0xFF323244)),
+                    child: ReusableCard(color: colorCard),
                   ),
                   Expanded(
-                    child: ReusableCard(color: Color(0xFF323244)),
+                    child: ReusableCard(color: colorCard),
                   ),
                 ],
               ),
             ),
-            const Expanded(
-              child: ReusableCard(color: Color(0xFF323244)),
+            Expanded(
+              child: ReusableCard(color: colorCard),
             ),
             Expanded(
               child: Row(
-                children: const [
+                children: [
                   Expanded(
-                    child: ReusableCard(color: Color(0xFF323244)),
+                    child: ReusableCard(color: colorCard),
                   ),
                   Expanded(
-                    child: ReusableCard(color: Color(0xFF323244)),
+                    child: ReusableCard(color: colorCard),
                   ),
                 ],
               ),
             ),
+            Container(
+              color: colorBottomContainer,
+              margin: const EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: bottomContainerHeight,
+            )
           ],
         ),
       ),
