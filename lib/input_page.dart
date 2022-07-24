@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'widgets/icon_content.dart';
+import 'widgets/reusable_card.dart';
 
-Color colorCard = const Color(0xFF323244);
+Color activeColour = const Color(0xFF323244);
+Color inactiveColour = const Color(0xFF24263B);
 Color colorBottomContainer = const Color(0xFFE83D66);
 Color colorTitle = const Color(0xFF838491);
 const double bottomContainerHeight = 80.0;
+
+enum Gender {
+  male,
+  female,
+}
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -14,6 +22,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+  Gender gender = Gender.male;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,38 +40,48 @@ class _InputPageState extends State<InputPage> {
                 children: [
                   Expanded(
                     child: ReusableCard(
-                      color: colorCard,
-                      child: ChildInfo(
+                      color: gender == Gender.male ? activeColour : inactiveColour,
+                      child: IconContent(
                         icon: const FaIcon(FontAwesomeIcons.mars),
                         title: 'MALE',
+                        onPressedButton: () {
+                          setState(() {
+                            gender = Gender.male;
+                          });
+                        },
                         colorTitle: colorTitle,
                       ),
                     ),
                   ),
                   Expanded(
                     child: ReusableCard(
-                      color: colorCard,
-                      child: ChildInfo(
+                      color: gender == Gender.female ? activeColour : inactiveColour,
+                      child: IconContent(
                         icon: const FaIcon(FontAwesomeIcons.venus),
                         title: 'FEMALE',
                         colorTitle: colorTitle,
+                        onPressedButton: () {
+                          setState(() {
+                            gender = Gender.female;
+                          });
+                        },
                       ),
-                      ),
+                    ),
                   ),
                 ],
               ),
             ),
             Expanded(
-              child: ReusableCard(color: colorCard),
+              child: ReusableCard(color: activeColour),
             ),
             Expanded(
               child: Row(
                 children: [
                   Expanded(
-                    child: ReusableCard(color: colorCard),
+                    child: ReusableCard(color: activeColour),
                   ),
                   Expanded(
-                    child: ReusableCard(color: colorCard),
+                    child: ReusableCard(color: activeColour),
                   ),
                 ],
               ),
@@ -74,52 +95,6 @@ class _InputPageState extends State<InputPage> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ChildInfo extends StatelessWidget {
-  final FaIcon icon;
-  final String title;
-  final Color colorTitle;
-
-  const ChildInfo({Key? key, required this.icon, required this.title, required this.colorTitle}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          icon: icon,
-          onPressed: () {},
-        ),
-        const SizedBox(
-          height: 8.0,
-        ),
-        Text(
-          title,
-          style: TextStyle(color: colorTitle),
-        )
-      ],
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  final Color color;
-  final Widget? child;
-
-  const ReusableCard({Key? key, required this.color, this.child})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-          color: color, borderRadius: BorderRadius.circular(10.0)),
-      child: child,
     );
   }
 }
