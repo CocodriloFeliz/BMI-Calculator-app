@@ -9,3 +9,5 @@ Color kInactiveColour = const Color(0xFF24263B);
 Color kColorBottomContainer = const Color(0xFFE83D66);
 Color kColorTitle = const Color(0xFF838491);
 const double kBottomContainerHeight = 80.0;
+
+const TextStyle kGrossFont = TextStyle(fontSize: 45.0, fontWeight: FontWeight.w900);
