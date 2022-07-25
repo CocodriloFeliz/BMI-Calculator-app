@@ -1,8 +1,11 @@
+import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'widgets/icon_content.dart';
-import 'widgets/reusable_card.dart';
-import 'constants/constants.dart';
+import 'package:bmi_calculator/widgets/bottom_button.dart';
+import 'package:bmi_calculator/widgets/icon_content.dart';
+import 'package:bmi_calculator/widgets/reusable_card.dart';
+import 'package:bmi_calculator/widgets/round_icon_button.dart';
+import 'package:bmi_calculator/constants/constants.dart';
 
 enum Gender {
   male,
@@ -143,8 +146,10 @@ class _InputPageState extends State<InputPage> {
                             children: [
                               Text(weightClient.toStringAsFixed(1),
                                   style: kGrossFont),
-                                  Text('kg',
-                                  style: TextStyle(color: kColorTitle),)
+                              Text(
+                                'kg',
+                                style: TextStyle(color: kColorTitle),
+                              )
                             ],
                           ),
                           Row(
@@ -176,15 +181,15 @@ class _InputPageState extends State<InputPage> {
                     ),
                   ),
                   Expanded(
-                    child: ReusableCard(color: kActiveColour,
-                    child: Column(
+                    child: ReusableCard(
+                      color: kActiveColour,
+                      child: Column(
                         children: [
                           Text('AGE',
                               style: TextStyle(
                                 color: kColorTitle,
                               )),
-                              Text(ageClient.toString(),
-                                  style: kGrossFont),
+                          Text(ageClient.toString(), style: kGrossFont),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -210,17 +215,21 @@ class _InputPageState extends State<InputPage> {
                             ],
                           )
                         ],
-                      ),),
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-            Container(
-              color: kColorBottomContainer,
-              margin: const EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-            )
+            BottomButton(
+              label: 'CALCULATE',
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ResultPage()));
+              },
+            ),
           ],
         ),
       ),
@@ -228,25 +237,3 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class RoundIconButton extends StatelessWidget {
-  const RoundIconButton(
-      {Key? key, required this.icon, required this.onPressed})
-      : super(key: key);
-
-  final FaIcon icon;
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: () {
-        onPressed();
-      },
-      elevation: 0.0,
-      fillColor: const Color(0xFF4C4F5E),
-      shape: const CircleBorder(),
-      constraints: const BoxConstraints.tightFor(width: 50.0, height: 50.0),
-      child: icon,
-    );
-  }
-}

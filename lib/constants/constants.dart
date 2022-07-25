@@ -11,3 +11,8 @@ Color kColorTitle = const Color(0xFF838491);
 const double kBottomContainerHeight = 80.0;
 
 const TextStyle kGrossFont = TextStyle(fontSize: 45.0, fontWeight: FontWeight.w900);
+
+const TextStyle kTextTitlePage = TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold);
+const TextStyle kBigNumber = TextStyle(fontSize: 85.0, fontWeight: FontWeight.w700);
+const TextStyle kTextSubtitlePage = TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 51, 201, 53));
+const TextStyle kBottomButtonFont = TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700);
