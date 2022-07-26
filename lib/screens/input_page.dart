@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/brain_calculator.dart';
 import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -93,7 +94,7 @@ class _InputPageState extends State<InputPage> {
                       crossAxisAlignment: CrossAxisAlignment.baseline,
                       textBaseline: TextBaseline.alphabetic,
                       children: [
-                        Text(heightClient.toStringAsFixed(1),
+                        Text(heightClient.toStringAsFixed(0),
                             style: kGrossFont),
                         Text(
                           'cm',
@@ -224,10 +225,16 @@ class _InputPageState extends State<InputPage> {
             BottomButton(
               label: 'CALCULATE',
               onPressed: () {
+                BrainCalculator calculator =
+                    BrainCalculator(height: heightClient, weight: weightClient);
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ResultPage()));
+                        builder: (context) => ResultPage(
+                              bmi: calculator.calculateBMI(),
+                              textInterpretation: calculator.textInterpretation(),
+                              textResult: calculator.textResult(),
+                            )));
               },
             ),
           ],
@@ -236,4 +243,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-
