@@ -135,6 +135,7 @@ class _InputPageState extends State<InputPage> {
                     child: ReusableCard(
                       color: kActiveColour,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('WEIGHT',
                               style: TextStyle(
@@ -185,6 +186,7 @@ class _InputPageState extends State<InputPage> {
                     child: ReusableCard(
                       color: kActiveColour,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('AGE',
                               style: TextStyle(
